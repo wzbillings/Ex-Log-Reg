@@ -35,6 +35,13 @@
     "text": "Optional quality of life tools\nI highly recommend that you use RStudio for coding in R. It provides many useful tools and a much nicer visual environment with a lot of features that make coding easier. You can get the latest version of RStudio, which is free and open source, on the Posit website.\nIf you are using RStudio, you should create an R Project for your work. This will manage the working directory for you and also sort of “bundles” your packages together. For a good introduction to R projects, you can read this website created by my PhD Adviser, Andreas Handel. Honestly if you are new to data science, I would recommend reading through Modules 1 and 2 of his course before reading my tutorial. It won’t be required but he is, in general, a better expository writer than I am, and his course covers a lot of fundamentals quite well. If you are looking for more resources, please check the LINK TO ADDITIONAL RESOURCES section.\nI also recommend using Quarto for Literate Programming. Literate programming is the idea of inserting code directly into explanatory prose, and it will help you write better code AND better comments. Quarto is an open-source tool for literate programming in many different programming languages that produces nicely formatted default outputs, and integrates very well with R and RStudio. It’s definitely worth your time to install Quarto and read through a bit of the tutorial. In fact, this entire website was created using R and Quarto.\nImagine your professor’s (or boss’) surprise when they ask you to do logistic regression and you hand in a beautifully formatted PDF or Word report with code, graphics, and tables built right in that you can effortlessly edit later if you need to, without having to copy and paste values into a table by hand!"
   },
   {
+    "objectID": "index.html#example-logistic-regression",
+    "href": "index.html#example-logistic-regression",
+    "title": "Getting started",
+    "section": "Example Logistic Regression",
+    "text": "Example Logistic Regression\nI can do logistic regression and so can you (if you follow along)!\nIn this repo, I’ll be working through an example logistic regression problem, while mostly following along with Frank Harrell’s R workflow book which I’ve been meaning to read for a while. I’ll also take some inspiration from these books:\n\nHosmer DW, Lemeshow S. Applied Logistic Regression. New York: Wiley; 2000.\nKleinbaum DG, Klein M. Logistic Regression: A Self-Learning Text. New York: Springer; 2010."
+  },
+  {
     "objectID": "index.html#data",
     "href": "index.html#data",
     "title": "Getting started",
