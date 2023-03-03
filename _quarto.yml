@@ -11,6 +11,30 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - text: Cleaning and EDA
+        menu:
+          - text: Data cleaning
+            href: R/cleaning.qmd
+          - text: Exploratory data analysis
+            href: R/EDA.qmd
+      - text: Analysis
+        menu: 
+          - text: (Mostly) base `R`
+            href: R/model-base.qmd
+          - text: `rms`
+            href: R/model-rms.qmd
+          - text: doing it Bayesian
+            href: R/model-bayes.qmd
+       - text: Results
+         href: R/report.qmd
+       - text: Final thoughts
+         menu:
+           - text: Discussion
+             href: R/discussion.qmd
+           - text: References
+             href: R/references.qmd
+           - text: Packages used
+             href: R/packages.qmd
     
     right:
       - icon: github
