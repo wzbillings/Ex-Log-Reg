@@ -29,6 +29,9 @@ format:
       light: pulse
       dark: vapor
     css: styles.css
+    toc: true
+    toc-depth: 2
+    toc-location: left
 
 
 
