@@ -1,0 +1,33 @@
+project:
+  type: website
+  
+execute: 
+  freeze: auto
+
+website:
+  title: "Zane's Logistic Regression Example"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+    
+    right:
+      - icon: github
+        href: https://github.com/wzbillings/cooperative-cobra/
+      - icon: arrow-90deg-up
+        href: https://wzbillings.com/
+  
+  cookie-consent: true    
+  search: true
+  site-url: "https://wzbillings.github.io/Ex-Log-Reg/"
+  repo-url: "https://github.com/wzbillings/Ex-Log-Reg/"
+
+format:
+  html:
+    theme:
+      light: pulse
+      dark: vapor
+    css: styles.css
+
+
+
