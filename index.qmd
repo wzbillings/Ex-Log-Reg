@@ -1,5 +1,7 @@
 ---
-title: "quarto-website-template"
+title: "Getting started"
+execute: 
+  freeze: false
 ---
 
 ```{r setup, include=FALSE}
@@ -11,11 +13,94 @@ box::use(
 )
 ```
 
+Welcome! This is my example logistic regression problem where I'll walk through
+all the steps I would use to tackle a logistic regression analysis. Hopefully
+it will be expository enough for relative beginners to follow along, but if
+not, then please [get in touch with me](https://wzbillings.com) and let me
+know what I can improve! However I won't be starting from scratch and I'll
+assume the following prerequisite knowledge:
 
-This is a Quarto website.
+* Familiarity with regression and basics of generalized linear models;
+* Basic `R` coding (e.g. loops, functions, conditional execution);
+* Fundamentals of statistics -- my goal is that a first or maybe
+second year student in my department would be able to use this as a tutorial.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+**TL;DR** if you're at the Epid/Bios department in UGA, I hope that the only
+prerequistes for this tutorial would be EPID 7010, BIOS 7010, and EPID/BIOS 7500
+(potentially optional if you're willing to learn the basics of `R` in your
+spare time).
 
-```{r}
-1 + 1
-```
+# Setup instructions
+
+To reproduce my analysis you will need: `R` and `RTools` (on Windows)
+at a minimum along
+with all necessary packages, but I highly encourage you to use `RStudio`
+and `Quarto` as well.
+
+## R
+
+To follow along, you will need to install `R`, or have somewhere that you
+can execute `R` code. You can download `R` for free [on the R project website](
+https://cran.r-project.org/)! For this example, I'll be using
+`r version$version.string`, which was the most up-to-date version when I 
+started this analysis. I think it will probably still work, but I can't
+guarantee that.
+
+## RTools
+
+If you use Windows (like me when I was writing this), you'll want to go ahead
+and install `RTools` -- install the latest version that is compatible
+with your version of `R`. You can download the installer
+[here](https://cran.r-project.org/bin/windows/Rtools/).
+
+## Packages
+
+Again I want to reiterate that if you are on Windows you will need to install
+`RTools` for this section. If you are using `MacOS`, you'll probably be
+fine, and if you're on any kind of `Linux/Unix` you know more about this than
+me, I assume. You can find a complete list of the packages I used ADD A LINK
+FOR PACKAGES USED HERE. If you're like me and you hate manually wrangling
+packages, you can also download the `renv.lock` file from this repo (ADD A
+LINK DIRECTLY TO THE RAW FILE) into your own R project
+
+## Optional quality of life tools
+
+I highly recommend that you use `RStudio` for coding in `R`. It provides
+many useful tools and a much nicer visual environment with a lot of features
+that make coding easier. You can get the latest version of `RStudio`, which is
+free and open source, [on the Posit website](https://posit.co/download/rstudio-desktop/).
+
+If you are using `RStudio`, you should create an **`R` Project** for your
+work. This will manage the working directory for you and also sort of
+"bundles" your packages together. For a good introduction to `R` projects,
+you can read [this website](https://andreashandel.github.io/MADAcourse/Data_Analysis_Structure.html)
+created by my PhD Adviser, [Andreas Handel](https://andreashandel.com). Honestly
+if you are new to data science, I would recommend reading through Modules 1
+and 2 of his course before reading my tutorial. It won't be required but he is,
+in general, a better expository writer than I am, and his course covers a lot of
+fundamentals quite well. If you are looking for more resources, please check
+the LINK TO ADDITIONAL RESOURCES section.
+
+I also recommend using Quarto for [Literate Programming](https://en.wikipedia.org/wiki/Literate_programming).
+Literate programming is the idea of inserting code directly into explanatory
+prose, and it will help you write better code AND better comments. [Quarto](https://quarto.org/)
+is an open-source tool for literate programming in many different programming
+languages that produces nicely formatted default outputs, and integrates very
+well with `R` and `RStudio`. It's definitely worth your time to install
+Quarto and read through a bit of the tutorial. In fact, this entire website was
+created using `R` and `Quarto`.
+
+Imagine your professor's (or boss') surprise when they ask you to do logistic
+regression and you hand in a beautifully formatted PDF or Word report with
+code, graphics, and tables built right in that you can effortlessly edit
+later if you need to, without having to copy and paste values into a table
+by hand!
+
+# Resouces and other info
+
+Right now, there's not
+much else I can think of to add on this place (probably a directory
+once there's more to show), so I've included the same basic information
+you'd find on the main GitHub page.
+
+{{< include README.qmd >}}

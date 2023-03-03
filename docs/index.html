@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Zane’s Logistic Regression Example - Getting started</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Zane’s Logistic Regression Example</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/wzbillings/cooperative-cobra/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://wzbillings.com/"><i class="bi bi-arrow-90deg-up" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Getting started</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Welcome! This is my example logistic regression problem where I’ll walk through all the steps I would use to tackle a logistic regression analysis. Hopefully it will be expository enough for relative beginners to follow along, but if not, then please <a href="https://wzbillings.com">get in touch with me</a> and let me know what I can improve! However I won’t be starting from scratch and I’ll assume the following prerequisite knowledge:</p>
+<ul>
+<li>Familiarity with regression and basics of generalized linear models;</li>
+<li>Basic <code>R</code> coding (e.g.&nbsp;loops, functions, conditional execution);</li>
+<li>Fundamentals of statistics – my goal is that a first or maybe second year student in my department would be able to use this as a tutorial.</li>
+</ul>
+<p><strong>TL;DR</strong> if you’re at the Epid/Bios department in UGA, I hope that the only prerequistes for this tutorial would be EPID 7010, BIOS 7010, and EPID/BIOS 7500 (potentially optional if you’re willing to learn the basics of <code>R</code> in your spare time).</p>
+<section id="setup-instructions" class="level1">
+<h1>Setup instructions</h1>
+<p>To reproduce my analysis you will need: <code>R</code> and <code>RTools</code> (on Windows) at a minimum along with all necessary packages, but I highly encourage you to use <code>RStudio</code> and <code>Quarto</code> as well.</p>
+<section id="r" class="level2">
+<h2 class="anchored" data-anchor-id="r">R</h2>
+<p>To follow along, you will need to install <code>R</code>, or have somewhere that you can execute <code>R</code> code. You can download <code>R</code> for free <a href="https://cran.r-project.org/">on the R project website</a>! For this example, I’ll be using R version 4.2.2 (2022-10-31 ucrt), which was the most up-to-date version when I started this analysis. I think it will probably still work, but I can’t guarantee that.</p>
+</section>
+<section id="rtools" class="level2">
+<h2 class="anchored" data-anchor-id="rtools">RTools</h2>
+<p>If you use Windows (like me when I was writing this), you’ll want to go ahead and install <code>RTools</code> – install the latest version that is compatible with your version of <code>R</code>. You can download the installer <a href="https://cran.r-project.org/bin/windows/Rtools/">here</a>.</p>
+</section>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>Again I want to reiterate that if you are on Windows you will need to install <code>RTools</code> for this section. If you are using <code>MacOS</code>, you’ll probably be fine, and if you’re on any kind of <code>Linux/Unix</code> you know more about this than me, I assume. You can find a complete list of the packages I used ADD A LINK FOR PACKAGES USED HERE. If you’re like me and you hate manually wrangling packages, you can also download the <code>renv.lock</code> file from this repo (ADD A LINK DIRECTLY TO THE RAW FILE) into your own R project</p>
+</section>
+<section id="optional-quality-of-life-tools" class="level2">
+<h2 class="anchored" data-anchor-id="optional-quality-of-life-tools">Optional quality of life tools</h2>
+<p>I highly recommend that you use <code>RStudio</code> for coding in <code>R</code>. It provides many useful tools and a much nicer visual environment with a lot of features that make coding easier. You can get the latest version of <code>RStudio</code>, which is free and open source, <a href="https://posit.co/download/rstudio-desktop/">on the Posit website</a>.</p>
+<p>If you are using <code>RStudio</code>, you should create an <strong><code>R</code> Project</strong> for your work. This will manage the working directory for you and also sort of “bundles” your packages together. For a good introduction to <code>R</code> projects, you can read <a href="https://andreashandel.github.io/MADAcourse/Data_Analysis_Structure.html">this website</a> created by my PhD Adviser, <a href="https://andreashandel.com">Andreas Handel</a>. Honestly if you are new to data science, I would recommend reading through Modules 1 and 2 of his course before reading my tutorial. It won’t be required but he is, in general, a better expository writer than I am, and his course covers a lot of fundamentals quite well. If you are looking for more resources, please check the LINK TO ADDITIONAL RESOURCES section.</p>
+<p>I also recommend using Quarto for <a href="https://en.wikipedia.org/wiki/Literate_programming">Literate Programming</a>. Literate programming is the idea of inserting code directly into explanatory prose, and it will help you write better code AND better comments. <a href="https://quarto.org/">Quarto</a> is an open-source tool for literate programming in many different programming languages that produces nicely formatted default outputs, and integrates very well with <code>R</code> and <code>RStudio</code>. It’s definitely worth your time to install Quarto and read through a bit of the tutorial. In fact, this entire website was created using <code>R</code> and <code>Quarto</code>.</p>
+<p>Imagine your professor’s (or boss’) surprise when they ask you to do logistic regression and you hand in a beautifully formatted PDF or Word report with code, graphics, and tables built right in that you can effortlessly edit later if you need to, without having to copy and paste values into a table by hand!</p>
+</section>
+</section>
+<section id="resouces-and-other-info" class="level1">
+<h1>Resouces and other info</h1>
+<p>Right now, there’s not much else I can think of to add on this place (probably a directory once there’s more to show), so I’ve included the same basic information you’d find on the main GitHub page.</p>
+<!-- This file is generated by README.qmd, please edit that instead. -->
+</section>
+<section id="example-logistic-regression" class="level1">
+<h1>Example Logistic Regression</h1>
+<p>I can do logistic regression and so can you (if you follow along)!</p>
+<p>In this repo, I’ll be working through an example logistic regression problem, while mostly following along with Frank Harrell’s <a href="https://hbiostat.org/rflow/">R workflow book</a> which I’ve been meaning to read for a while. I’ll also take some inspiration from these books:</p>
+<ul>
+<li>Hosmer DW, Lemeshow S. Applied Logistic Regression. New York: Wiley; 2000.</li>
+<li>Kleinbaum DG, Klein M. Logistic Regression: A Self-Learning Text. New York: Springer; 2010.</li>
+</ul>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>For my analyses, I’ll be using data from <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988630/">this paper</a>, which is open access and thus available online.</p>
+<blockquote class="blockquote">
+<p>Darton TC, Jones C, Blohmke CJ, et al.&nbsp;Using a Human Challenge Model of Infection to Measure Vaccine Efficacy: A Randomised, Controlled Trial Comparing the Typhoid Vaccines M01ZH09 with Placebo and Ty21a. PLoS Negl Trop Dis. 2016;10(8):e0004926. Published 2016 Aug 17. doi:10.1371/journal.pntd.0004926</p>
+</blockquote>
+</section>
+<section id="other-resources" class="level2">
+<h2 class="anchored" data-anchor-id="other-resources">Other Resources</h2>
+<p>In general I like to use in-text citations or footnotes whenever I reference something, so you don’t just have an ambiguous list of references. But I’ll also try to keep a general list here.</p>
+<ul>
+<li><a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">Jenny Bryan’s post about project-oriented workflows in R</a> (MUST READ for all data scientists!!)</li>
+<li><a href="https://discourse.datamethods.org/t/author-checklist/3407">Frank Harrell’s statistical checklist for authors</a></li>
+<li><a href="https://www.fharrell.com/post/covadj/">RCT Analyses with Covariate Adjustment (Frank Harrell)</a></li>
+<li><a href="https://www.fharrell.com/post/rdist/">Avoding One Number Summaries of Treatment Effect (Frank Harrell)</a></li>
+<li><a href="https://www.fharrell.com/post/modplan/">Frank Harrell’s biostatistical modeling plan</a></li>
+<li>At this rate I should just link <a href="https://fharrell.com/post">Frank Harrell’s entire blog</a></li>
+</ul>
+</section>
+<section id="licenses" class="level2">
+<h2 class="anchored" data-anchor-id="licenses">Licenses</h2>
+<p><strong>Text and figures:</strong> all text and images I create in this repository are licensed under the Creative Commons Attribution-ShareAlike 4.0 International License, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+<p><strong>Code:</strong> all code created by me is licensed under the GNU Affero General Public License, <a href="LICENSE">AGPL 3.0</a>.</p>
+</section>
+<section id="contact-info" class="level2">
+<h2 class="anchored" data-anchor-id="contact-info">Contact Info</h2>
+<p>Please see my website for contact information: <a href="https://wzbillings.com" class="uri">https://wzbillings.com</a>.</p>
+<p>Bug reports can be filed <a href="https://github.com/wzbillings/Ex-Log-Reg/issues">here</a>.</p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li>As usual, I basically copied this README from <a href="https://github.com/andrewheiss/testy-turtle/blob/main/README.qmd/">Andrew Heiss</a> , and changed like a handful of words. Thanks, Andrew!</li>
+</ul>
+<!-- END OF FILE -->
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+</body></html>
