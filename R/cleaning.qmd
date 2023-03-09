@@ -33,3 +33,8 @@ that's the order I plan to discuss the steps.
 
 I'm not usually a fan of a lot of introductory content, so let's go ahead
 and jump in!
+
+# Importing the data
+
+Of course the first thing we need to do is read out data from the Excel file
+into R.
